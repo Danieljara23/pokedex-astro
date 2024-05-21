@@ -1,0 +1,223 @@
+---
+interface Props {
+  type: string;
+  imageUrl: string;
+  name: string;
+  pokemonIndex: string;
+}
+
+const POKEMON_TYPES_ICONS = {
+  fire: "bxs-hot",
+  flying: "bx-wind",
+  water: "bx-water",
+  grass: "bx-leaf",
+  bug: "bxs-bug",
+  electric: "bxs-bolt",
+  poison: "bxs-skull",
+  fighting: "bx-error-circle",
+  ground: "bx-tree-alt",
+  normal: "bx-sun",
+  psychic: "bxs-magic-wand",
+  ghost: "bx-ghost",
+};
+
+const { type, imageUrl, name, pokemonIndex } = Astro.props;
+---
+
+<div class={`pokemon-card ${type}`}>
+  <div class={`pokemon-card__type-label ${type}`}>
+    <i class={`pokemon-card__name-icon bx ${POKEMON_TYPES_ICONS[type]} ${type}`}
+    ></i>
+    <span>{type}</span>
+  </div>
+  <div class="pokemon-card__image">
+    <img src={imageUrl} loading="lazy" />
+  </div>
+  <div class="pokemon-card__name">
+    <h4>${name}</h4>
+  </div>
+  <p class="pokemon-card__eyebrow">#{pokemonIndex}</p>
+</div>
+<style>
+  .pokemon-card {
+    width: 300px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    border-radius: 8px;
+    position: relative;
+
+    &.grass {
+      background-color: var(--green-100);
+    }
+
+    &.fire {
+      background-color: var(--orange-100);
+    }
+
+    &.water {
+      background-color: var(--blue-100);
+    }
+
+    &.poison {
+      background-color: var(--deep-purple-100);
+    }
+
+    &.electric {
+      background-color: var(--yellow-100);
+
+      & .pokemon-card--name {
+        color: var(--grey-800);
+      }
+    }
+
+    &.bug {
+      background-color: var(--light-green-100);
+    }
+
+    &.normal {
+      & .pokemon-card--name {
+        color: var(--grey-800);
+      }
+    }
+
+    &.ground {
+      background-color: var(--brown-100);
+    }
+
+    &.fighting {
+      background-color: var(--deep-orange-100);
+    }
+
+    &.psychic {
+      background-color: var(--purple-100);
+    }
+
+    &.ghost {
+      background-color: var(--indigo-100);
+    }
+
+    &.ice {
+      background-color: var(--light-blue-100);
+    }
+
+    &.dark {
+      background-color: var(--grey-100);
+    }
+
+    &.rock {
+      background-color: var(--blue-grey-100);
+    }
+
+    &.fairy {
+      background-color: var(--pink-100);
+    }
+
+    & .pokemon-card__type-label {
+      color: white;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      padding: 5px;
+      border-radius: 8px 0 8px 0;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+
+      &.grass {
+        background-color: var(--green-500);
+      }
+
+      &.fire {
+        background-color: var(--orange-500);
+      }
+
+      &.water {
+        background-color: var(--blue-500);
+      }
+
+      &.poison {
+        background-color: var(--deep-purple-500);
+      }
+
+      &.electric {
+        background-color: var(--yellow-500);
+        color: var(--grey-800);
+      }
+
+      &.bug {
+        background-color: var(--light-green-500);
+      }
+
+      &.normal,
+      &.dragon {
+        background-color: var(--light-blue-500);
+      }
+
+      &.ground {
+        background-color: var(--brown-500);
+      }
+
+      &.fighting {
+        background-color: var(--deep-orange-500);
+      }
+
+      &.psychic {
+        background-color: var(--purple-500);
+      }
+
+      &.ghost {
+        background-color: var(--indigo-500);
+      }
+
+      &.ice {
+        background-color: var(--light-blue-500);
+      }
+
+      &.dark {
+        background-color: var(--grey-500);
+      }
+
+      &.rock,
+      &.steel {
+        background-color: var(--blue-grey-500);
+      }
+
+      &.fairy {
+        background-color: var(--pink-500);
+      }
+    }
+
+    & .pokemon-card__name {
+      color: var(--grey-800);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    & .pokemon-card__eyebrow {
+      color: var(--grey-600);
+      font-size: 14px;
+      font-weight: 500;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    & img {
+      transform: scale(1);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover img {
+      transform: scale(1.1);
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+</style>
