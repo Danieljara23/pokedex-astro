@@ -23,21 +23,23 @@ const POKEMON_TYPES_ICONS = {
 
 const { type, imageUrl, name, pokemonIndex } = Astro.props;
 ---
+<a href={`pokemon/${name}`}>
+  <div class={`pokemon-card ${type}`}>
+    <div class={`pokemon-card__type-label ${type}`}>
+      <i class={`pokemon-card__name-icon bx ${POKEMON_TYPES_ICONS[type]} ${type}`}
+      ></i>
+      <span>{type}</span>
+    </div>
+    <div class="pokemon-card__image">
+      <img src={imageUrl} loading="lazy" />
+    </div>
+    <div class="pokemon-card__name">
+      <h4>${name}</h4>
+    </div>
+    <p class="pokemon-card__eyebrow">#{pokemonIndex}</p>
+  </div>
+</a>
 
-<div class={`pokemon-card ${type}`}>
-  <div class={`pokemon-card__type-label ${type}`}>
-    <i class={`pokemon-card__name-icon bx ${POKEMON_TYPES_ICONS[type]} ${type}`}
-    ></i>
-    <span>{type}</span>
-  </div>
-  <div class="pokemon-card__image">
-    <img src={imageUrl} loading="lazy" />
-  </div>
-  <div class="pokemon-card__name">
-    <h4>${name}</h4>
-  </div>
-  <p class="pokemon-card__eyebrow">#{pokemonIndex}</p>
-</div>
 <style>
   .pokemon-card {
     width: 300px;
