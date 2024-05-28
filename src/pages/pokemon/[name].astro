@@ -1,0 +1,22 @@
+---
+import { pokemon as pokemonData } from "../../data/pokemon.json";
+import Layout from "../../layouts/Layout.astro";
+
+// const { pokemon } = pokemonData;
+export async function getStaticPaths() {
+  return pokemonData.map(({ name, about, img, num }) => {
+    return {
+      params: { name },
+      props: {name, about, img, num}
+    };
+  });
+}
+
+const { name, about, img, num } = Astro.props;
+---
+
+<Layout title={name}>
+    <h1>{name}</h1>
+    <p>{about}</p>
+    <img src={img} alt="" srcset="">
+</Layout>
